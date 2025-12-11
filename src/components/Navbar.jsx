@@ -57,10 +57,10 @@ const Navbar = ({ scrolled }) => {
 
   const navLinks = useMemo(
     () => [
-      { id: "features", label: "Features" },
-      { id: "merchants", label: "For Merchants" },
-      { id: "how-it-works", label: "How It Works" },
-      { id: "trust", label: "Trust & Scale" },
+      { id: "features", label: "Features", icon: "fa-star" },
+      { id: "merchants", label: "For Merchants", icon: "fa-store" },
+      { id: "how-it-works", label: "How It Works", icon: "fa-lightbulb" },
+      { id: "trust", label: "Trust & Scale", icon: "fa-shield-alt" },
     ],
     [],
   );
@@ -155,7 +155,10 @@ const Navbar = ({ scrolled }) => {
                     transition={{ delay: index * 0.1 }}
                     whileTap={buttonTap}
                   >
-                    {link.label}
+                    <div className="mobile-nav-link-content">
+                      <i className={`fas ${link.icon}`}></i>
+                      <span>{link.label}</span>
+                    </div>
                     <i className="fas fa-chevron-right"></i>
                   </motion.button>
                 ))}
