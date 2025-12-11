@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
@@ -49,18 +50,21 @@ const Navbar = ({ scrolled }) => {
 
   const scrollToSection = useCallback((sectionId) => {
     setIsOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navbarHeight = 80; // Fixed navbar height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - navbarHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
+    // Small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80; // Fixed navbar height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
   }, []);
 
   const navLinks = useMemo(
@@ -184,6 +188,10 @@ const Navbar = ({ scrolled }) => {
       </div>
     </motion.nav>
   );
+};
+
+Navbar.propTypes = {
+  scrolled: PropTypes.bool.isRequired,
 };
 
 export default Navbar;
