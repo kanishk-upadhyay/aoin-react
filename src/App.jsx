@@ -6,6 +6,9 @@ import HomePage from "./pages/HomePage";
 import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 
+/**
+ * App component - Root application component with routing and scroll state management
+ */
 function App() {
   const [scrolled, setScrolled] = useState(false);
 

@@ -2,7 +2,14 @@ import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
 import "./Hero.css";
 
+/**
+ * Hero component - Main landing section with animations and call-to-actions
+ */
 const Hero = () => {
+  /**
+   * Scrolls smoothly to a specific section by ID
+   * @param {string} sectionId - ID of the target section
+   */
   const scrollToSection = useCallback((sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {

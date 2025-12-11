@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./HowItWorks.css";
 
+/**
+ * HowItWorks component - Displays step-by-step guides for shoppers and merchants
+ */
 const HowItWorks = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -98,12 +101,11 @@ const HowItWorks = () => {
             Get Started in <span className="text-gradient">4 Simple Steps</span>
           </h2>
           <p className="section-description">
-            Whether you're shopping or selling, getting started is quick and
-            easy
+            Whether you&apos;re shopping or selling, getting started is quick
+            and easy
           </p>
         </motion.div>
 
-        {/* Shopper Steps */}
         <div className="steps-section">
           <motion.h3
             className="steps-subtitle"
@@ -160,7 +162,6 @@ const HowItWorks = () => {
           </motion.div>
         </div>
 
-        {/* Merchant Steps */}
         <div className="steps-section">
           <motion.h3
             className="steps-subtitle merchant-subtitle"

@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./Trust.css";
 
+/**
+ * Trust component - Displays statistics, trust features, and testimonials
+ */
 const Trust = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -81,11 +85,11 @@ const Trust = () => {
             Trusted by <span className="text-gradient">Thousands</span>
           </h2>
           <p className="section-description">
-            Join our growing community of satisfied shoppers and successful merchants
+            Join our growing community of satisfied shoppers and successful
+            merchants
           </p>
         </motion.div>
 
-        {/* Statistics */}
         <motion.div
           ref={ref}
           className="stats-grid"
@@ -106,7 +110,6 @@ const Trust = () => {
           ))}
         </motion.div>
 
-        {/* Trust Features */}
         <motion.div
           className="trust-features"
           initial="hidden"
@@ -150,7 +153,6 @@ const Trust = () => {
           ))}
         </motion.div>
 
-        {/* Testimonials Preview */}
         <motion.div
           className="testimonials-preview"
           initial={{ opacity: 0, y: 30 }}
@@ -171,8 +173,8 @@ const Trust = () => {
             ))}
           </div>
           <p className="testimonial-text">
-            "AOIN has transformed the way I shop online. The live demonstrations
-            make it so easy to see products before buying!"
+            &ldquo;AOIN has transformed the way I shop online. The live
+            demonstrations make it so easy to see products before buying!&rdquo;
           </p>
           <div className="testimonial-author">
             <div className="author-avatar">
@@ -189,14 +191,18 @@ const Trust = () => {
   );
 };
 
-// Stat Card Component with Counter Animation
+/**
+ * StatCard - Displays an animated statistic with counter effect
+ * @param {Object} stat - Statistic data object
+ * @param {boolean} inView - Whether the card is in viewport
+ */
 const StatCard = ({ stat, inView }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
 
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 60;
     const increment = stat.number / steps;
     let current = 0;
@@ -249,6 +255,17 @@ const StatCard = ({ stat, inView }) => {
       <div className="stat-label">{stat.label}</div>
     </motion.div>
   );
+};
+
+StatCard.propTypes = {
+  stat: PropTypes.shape({
+    icon: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired,
+    suffix: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+  }).isRequired,
+  inView: PropTypes.bool.isRequired,
 };
 
 export default Trust;

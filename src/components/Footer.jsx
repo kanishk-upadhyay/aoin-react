@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import "./Footer.css";
 
+/**
+ * Footer component - Site footer with navigation, contact info, and social links
+ */
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -26,6 +29,10 @@ const Footer = () => {
     { icon: "fa-youtube", href: "#", label: "YouTube" },
   ];
 
+  /**
+   * Scrolls to a section based on href anchor
+   * @param {string} href - Anchor link to scroll to
+   */
   const scrollToSection = (href) => {
     if (href.startsWith("#")) {
       const element = document.querySelector(href);
@@ -39,7 +46,6 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          {/* Brand Section */}
           <div className="footer-brand">
             <div className="footer-logo">
               <img
@@ -67,7 +73,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="footer-links">
             <h5 className="footer-heading">
               <i className="fas fa-link"></i>
@@ -89,7 +94,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support */}
           <div className="footer-links">
             <h5 className="footer-heading">
               <i className="fas fa-headset"></i>
@@ -111,7 +115,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="footer-contact-section">
             <h5 className="footer-heading">Get in Touch</h5>
             <div className="footer-contact">
@@ -135,7 +138,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">

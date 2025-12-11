@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
 
-// Animation variants
 const navbarVariants = {
   hidden: { y: -100 },
   visible: { y: 0 },
@@ -18,6 +17,14 @@ const mobileMenuVariants = {
 const buttonHover = { scale: 1.05 };
 const buttonTap = { scale: 0.95 };
 
+const NAVBAR_HEIGHT = 80;
+const SCROLL_DELAY = 100;
+
+/**
+ * Navbar component with scroll behavior and responsive mobile menu
+ * @param {Object} props - Component props
+ * @param {boolean} props.scrolled - Indicates if page has been scrolled
+ */
 const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -48,23 +55,25 @@ const Navbar = ({ scrolled }) => {
     setIsOpen(false);
   }, []);
 
+  /**
+   * Scrolls to a specific section with navbar height offset
+   * @param {string} sectionId - ID of the target section
+   */
   const scrollToSection = useCallback((sectionId) => {
     setIsOpen(false);
 
-    // Small delay to ensure menu closes before scrolling
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        const navbarHeight = 80; // Fixed navbar height
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+        const offsetPosition = elementPosition + window.scrollY - NAVBAR_HEIGHT;
 
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
       }
-    }, 100);
+    }, SCROLL_DELAY);
   }, []);
 
   const navLinks = useMemo(
@@ -96,7 +105,6 @@ const Navbar = ({ scrolled }) => {
             />
           </Link>
 
-          {/* Desktop Menu */}
           <div className="navbar-menu desktop">
             {navLinks.map((link) => (
               <motion.button
@@ -130,7 +138,6 @@ const Navbar = ({ scrolled }) => {
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
           <motion.button
             className="navbar-toggle mobile"
             onClick={toggleMenu}
@@ -145,7 +152,6 @@ const Navbar = ({ scrolled }) => {
           </motion.button>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div

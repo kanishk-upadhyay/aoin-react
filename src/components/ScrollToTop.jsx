@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./ScrollToTop.css";
 
+/**
+ * ScrollToTop component - Displays a button to scroll to top when page is scrolled
+ */
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 

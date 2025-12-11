@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./Features.css";
 
+/**
+ * Features component - Displays shopper and merchant features in separate sections
+ */
 const Features = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -103,8 +106,8 @@ const Features = () => {
               Shop Smarter with <span className="text-gradient">AOIN</span>
             </h2>
             <p className="section-description">
-              Discover a new way to shop with live demonstrations, curated collections,
-              and exclusive deals tailored just for you.
+              Discover a new way to shop with live demonstrations, curated
+              collections, and exclusive deals tailored just for you.
             </p>
           </motion.div>
 
