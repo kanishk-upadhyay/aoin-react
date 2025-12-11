@@ -1,58 +1,72 @@
 import { motion } from "framer-motion";
+import { useCallback, useMemo } from "react";
 import "./Hero.css";
 
 const Hero = () => {
-  const scrollToFeatures = () => {
-    const element = document.getElementById("features");
+  const scrollToSection = useCallback((sectionId) => {
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, []);
 
-  const scrollToMerchants = () => {
-    const element = document.getElementById("merchants");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const scrollDown = () => {
-    const element = document.getElementById("features");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2,
+          delayChildren: 0.3,
+        },
       },
-    },
-  };
+    }),
+    [],
+  );
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
+  const itemVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 30 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.6,
+          ease: "easeOut",
+        },
       },
-    },
-  };
+    }),
+    [],
+  );
 
-  const floatingIcons = [
-    { icon: "fa-shopping-bag", delay: 0, duration: 5 },
-    { icon: "fa-cart-shopping", delay: 0.5, duration: 5.5 },
-    { icon: "fa-tag", delay: 1, duration: 6 },
-    { icon: "fa-gift", delay: 1.5, duration: 5.2 },
-    { icon: "fa-star", delay: 2, duration: 5.8 },
-  ];
+  const floatingIcons = useMemo(
+    () => [
+      { icon: "fa-shopping-bag", delay: 0, duration: 5 },
+      { icon: "fa-cart-shopping", delay: 0.5, duration: 5.5 },
+      { icon: "fa-tag", delay: 1, duration: 6 },
+      { icon: "fa-gift", delay: 1.5, duration: 5.2 },
+      { icon: "fa-star", delay: 2, duration: 5.8 },
+    ],
+    [],
+  );
+
+  const stats = useMemo(
+    () => [
+      { icon: "fa-users", number: "50K+", label: "Active Users" },
+      { icon: "fa-store", number: "1,000+", label: "Merchants" },
+      { icon: "fa-box", number: "100K+", label: "Products" },
+    ],
+    [],
+  );
+
+  const featureBadges = useMemo(
+    () => [
+      { icon: "fa-shield-alt", text: "Secure Payments" },
+      { icon: "fa-truck", text: "Fast Delivery" },
+      { icon: "fa-headset", text: "24/7 Support" },
+    ],
+    [],
+  );
 
   return (
     <section className="hero">
@@ -86,33 +100,21 @@ const Hero = () => {
             </motion.p>
 
             <motion.div variants={itemVariants} className="hero-stats">
-              <div className="stat-item">
-                <i className="fas fa-users"></i>
-                <div className="stat-info">
-                  <span className="stat-number">50K+</span>
-                  <span className="stat-label">Active Users</span>
+              {stats.map((stat, index) => (
+                <div key={index} className="stat-item">
+                  <i className={`fas ${stat.icon}`}></i>
+                  <div className="stat-info">
+                    <span className="stat-number">{stat.number}</span>
+                    <span className="stat-label">{stat.label}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="stat-item">
-                <i className="fas fa-store"></i>
-                <div className="stat-info">
-                  <span className="stat-number">1,000+</span>
-                  <span className="stat-label">Merchants</span>
-                </div>
-              </div>
-              <div className="stat-item">
-                <i className="fas fa-box"></i>
-                <div className="stat-info">
-                  <span className="stat-number">100K+</span>
-                  <span className="stat-label">Products</span>
-                </div>
-              </div>
+              ))}
             </motion.div>
 
             <motion.div variants={itemVariants} className="hero-actions">
               <motion.button
                 className="btn btn-primary btn-lg"
-                onClick={scrollToFeatures}
+                onClick={() => scrollToSection("features")}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -121,7 +123,7 @@ const Hero = () => {
               </motion.button>
               <motion.button
                 className="btn btn-outline btn-lg"
-                onClick={scrollToMerchants}
+                onClick={() => scrollToSection("merchants")}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -131,18 +133,12 @@ const Hero = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="hero-features">
-              <div className="feature-badge">
-                <i className="fas fa-shield-alt"></i>
-                <span>Secure Payments</span>
-              </div>
-              <div className="feature-badge">
-                <i className="fas fa-truck"></i>
-                <span>Fast Delivery</span>
-              </div>
-              <div className="feature-badge">
-                <i className="fas fa-headset"></i>
-                <span>24/7 Support</span>
-              </div>
+              {featureBadges.map((badge, index) => (
+                <div key={index} className="feature-badge">
+                  <i className={`fas ${badge.icon}`}></i>
+                  <span>{badge.text}</span>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
@@ -225,7 +221,7 @@ const Hero = () => {
       <div className="hero-scroll-indicator">
         <motion.div
           className="scroll-arrow"
-          onClick={scrollDown}
+          onClick={() => scrollToSection("features")}
           animate={{ y: [0, 10, 0] }}
           transition={{
             duration: 1.5,

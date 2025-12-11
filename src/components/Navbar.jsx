@@ -1,7 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
+
+// Animation variants
+const navbarVariants = {
+  hidden: { y: -100 },
+  visible: { y: 0 },
+};
+
+const mobileMenuVariants = {
+  hidden: { opacity: 0, height: 0 },
+  visible: { opacity: 1, height: "auto" },
+};
+
+const buttonHover = { scale: 1.05 };
+const buttonTap = { scale: 0.95 };
 
 const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,34 +39,38 @@ const Navbar = ({ scrolled }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
-  const scrollToSection = (sectionId) => {
-    closeMenu();
+  const scrollToSection = useCallback((sectionId) => {
+    setIsOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, []);
 
-  const navLinks = [
-    { id: "features", label: "Features" },
-    { id: "merchants", label: "For Merchants" },
-    { id: "how-it-works", label: "How It Works" },
-    { id: "trust", label: "Trust & Scale" },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { id: "features", label: "Features" },
+      { id: "merchants", label: "For Merchants" },
+      { id: "how-it-works", label: "How It Works" },
+      { id: "trust", label: "Trust & Scale" },
+    ],
+    [],
+  );
 
   return (
     <motion.nav
       className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}
-      initial={{ y: -100 }}
-      animate={{ y: isVisible ? 0 : -100 }}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={navbarVariants}
       transition={{ duration: 0.3 }}
     >
       <div className="container">
@@ -73,8 +91,8 @@ const Navbar = ({ scrolled }) => {
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 className="nav-link"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={buttonHover}
+                whileTap={buttonTap}
               >
                 {link.label}
               </motion.button>
@@ -84,16 +102,16 @@ const Navbar = ({ scrolled }) => {
           <div className="navbar-actions desktop">
             <motion.button
               className="btn-link"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={buttonHover}
+              whileTap={buttonTap}
             >
               <i className="fas fa-user-circle"></i>
               Sign In
             </motion.button>
             <motion.button
               className="btn btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={buttonHover}
+              whileTap={buttonTap}
             >
               <i className="fas fa-rocket"></i>
               Join Now
@@ -104,7 +122,7 @@ const Navbar = ({ scrolled }) => {
           <motion.button
             className="navbar-toggle mobile"
             onClick={toggleMenu}
-            whileTap={{ scale: 0.9 }}
+            whileTap={buttonTap}
             aria-label="Toggle menu"
           >
             <span className={`hamburger ${isOpen ? "open" : ""}`}>
@@ -120,9 +138,10 @@ const Navbar = ({ scrolled }) => {
           {isOpen && (
             <motion.div
               className="navbar-mobile-menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={mobileMenuVariants}
               transition={{ duration: 0.3 }}
             >
               <div className="mobile-menu-content">
@@ -134,7 +153,7 @@ const Navbar = ({ scrolled }) => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={buttonTap}
                   >
                     {link.label}
                     <i className="fas fa-chevron-right"></i>
@@ -147,7 +166,7 @@ const Navbar = ({ scrolled }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={buttonTap}
                   >
                     <i className="fas fa-user-circle"></i>
                     Sign In
@@ -157,7 +176,7 @@ const Navbar = ({ scrolled }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={buttonTap}
                   >
                     <i className="fas fa-rocket"></i>
                     Join Now
