@@ -1,0 +1,341 @@
+/* ============================================================================
+   HOW IT WORKS SECTION
+   ============================================================================ */
+
+.how-it-works-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 50%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.how-it-works-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(234, 88, 12, 0.05) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(14, 165, 233, 0.05) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+}
+
+/* ============================================================================
+   STEPS SECTION
+   ============================================================================ */
+
+.steps-section {
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.steps-section:last-of-type {
+    margin-bottom: 3rem;
+}
+
+.steps-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--primary);
+    width: fit-content;
+}
+
+.merchant-subtitle {
+    color: var(--secondary);
+    border-bottom-color: var(--secondary);
+}
+
+.steps-subtitle i {
+    font-size: 1.75rem;
+}
+
+/* ============================================================================
+   STEPS GRID
+   ============================================================================ */
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+}
+
+/* ============================================================================
+   STEP CARDS
+   ============================================================================ */
+
+.step-card {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    padding: 2.5rem 2rem;
+    border: 2px solid var(--gray-200);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* ============================================================================
+   STEP NUMBER
+   ============================================================================ */
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(
+        135deg,
+        var(--primary) 0%,
+        var(--primary-dark) 100%
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+    z-index: 2;
+    transition: all var(--transition-base);
+}
+
+.merchant-number {
+    background: linear-gradient(135deg, var(--secondary) 0%, #0284c7 100%);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+/* ============================================================================
+   STEP ICON
+   ============================================================================ */
+
+.step-icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    border-radius: var(--radius-xl);
+    margin: 0 auto 1.5rem;
+}
+
+.step-icon i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.merchant-icon {
+    background: rgba(14, 165, 233, 0.1);
+}
+
+.merchant-icon i {
+    color: var(--secondary);
+}
+
+/* ============================================================================
+   STEP CONTENT
+   ============================================================================ */
+
+.step-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================================================
+   STEP CONNECTOR
+   ============================================================================ */
+
+.step-connector {
+    position: absolute;
+    top: 50%;
+    right: -2rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.step-connector i {
+    font-size: 1.5rem;
+    color: var(--gray-300);
+}
+
+/* ============================================================================
+   CTA CONTAINER
+   ============================================================================ */
+
+.cta-container {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(
+        135deg,
+        var(--primary) 0%,
+        var(--primary-dark) 100%
+    );
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 20px 40px rgba(234, 88, 12, 0.2);
+    margin-top: 4rem;
+}
+
+.cta-container h3 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.cta-buttons .btn-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.cta-buttons .btn-primary {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.cta-buttons .btn-primary:hover {
+    background: var(--gray-100);
+    transform: translateY(-2px);
+    color: var(--primary);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.5rem;
+    }
+
+    .step-connector {
+        display: none;
+    }
+
+    .step-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .step-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .step-icon i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .steps-section {
+        margin-bottom: 3rem;
+    }
+
+    .steps-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .step-card {
+        padding: 2rem;
+    }
+
+    .step-title {
+        font-size: 1.25rem;
+    }
+
+    .step-description {
+        font-size: 0.95rem;
+    }
+
+    .cta-container {
+        padding: 2rem 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .step-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+
+    .step-icon i {
+        font-size: 1.75rem;
+    }
+
+    .step-title {
+        font-size: 1.125rem;
+    }
+
+    .step-description {
+        font-size: 0.875rem;
+    }
+
+    .cta-container {
+        padding: 1.5rem 1rem;
+    }
+}

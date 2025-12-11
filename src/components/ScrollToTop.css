@@ -1,0 +1,55 @@
+/* ============================================================================
+   SCROLL TO TOP BUTTON
+   ============================================================================ */
+
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border: none;
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.3);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.scroll-to-top-btn:hover {
+    box-shadow: 0 12px 32px rgba(234, 88, 12, 0.4);
+}
+
+.scroll-to-top-btn i {
+    color: var(--white);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .scroll-to-top-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top-btn {
+        bottom: 1rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+}
