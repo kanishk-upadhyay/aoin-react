@@ -153,45 +153,29 @@ const Navbar = ({ scrolled }) => {
               transition={{ duration: 0.3 }}
             >
               <div className="mobile-menu-content">
-                {navLinks.map((link, index) => (
-                  <motion.button
+                {navLinks.map((link) => (
+                  <button
                     key={link.id}
                     onClick={() => scrollToSection(link.id)}
                     className="mobile-nav-link"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileTap={buttonTap}
                   >
                     <div className="mobile-nav-link-content">
                       <i className={`fas ${link.icon}`}></i>
                       <span>{link.label}</span>
                     </div>
                     <i className="fas fa-chevron-right"></i>
-                  </motion.button>
+                  </button>
                 ))}
 
                 <div className="mobile-menu-actions">
-                  <motion.button
-                    className="btn btn-outline"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    whileTap={buttonTap}
-                  >
+                  <button className="btn btn-outline">
                     <i className="fas fa-user-circle"></i>
                     Sign In
-                  </motion.button>
-                  <motion.button
-                    className="btn btn-primary"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    whileTap={buttonTap}
-                  >
+                  </button>
+                  <button className="btn btn-primary">
                     <i className="fas fa-rocket"></i>
                     Join Now
-                  </motion.button>
+                  </button>
                 </div>
               </div>
             </motion.div>
