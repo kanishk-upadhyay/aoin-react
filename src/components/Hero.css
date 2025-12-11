@@ -418,8 +418,7 @@
     }
 
     .hero-visual {
-        height: 400px;
-        order: -1;
+        display: none;
     }
 
     .floating-icons-container {
