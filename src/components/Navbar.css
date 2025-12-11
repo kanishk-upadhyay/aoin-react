@@ -212,30 +212,12 @@
     touch-action: manipulation;
 }
 
-.mobile-nav-link-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.mobile-nav-link-content i {
-    font-size: 1.125rem;
-    color: var(--gray-500);
-    min-width: 24px;
-    text-align: center;
-    transition: all var(--transition-base);
-}
-
 .mobile-nav-link:active {
     background: var(--gray-100);
 }
 
 .mobile-nav-link:hover {
     background: var(--gray-50);
-    color: var(--primary);
-}
-
-.mobile-nav-link:hover .mobile-nav-link-content i {
     color: var(--primary);
 }
 

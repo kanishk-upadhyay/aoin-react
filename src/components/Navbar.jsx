@@ -155,10 +155,7 @@ const Navbar = ({ scrolled }) => {
                     transition={{ delay: index * 0.1 }}
                     whileTap={buttonTap}
                   >
-                    <div className="mobile-nav-link-content">
-                      <i className={`fas ${link.icon}`}></i>
-                      <span>{link.label}</span>
-                    </div>
+                    <span>{link.label}</span>
                     <i className="fas fa-chevron-right"></i>
                   </motion.button>
                 ))}
