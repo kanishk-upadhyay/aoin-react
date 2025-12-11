@@ -77,7 +77,7 @@ const Navbar = ({ scrolled }) => {
         <div className="navbar-content">
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
             <motion.img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="AOIN Logo"
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ type: "spring", stiffness: 300 }}

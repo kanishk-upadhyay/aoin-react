@@ -42,7 +42,10 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="footer-brand">
             <div className="footer-logo">
-              <img src="/logo.png" alt="AOIN Logo" />
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="AOIN Logo"
+              />
             </div>
             <p className="footer-tagline">
               Your premium live shopping destination. Connect, shop, and grow
