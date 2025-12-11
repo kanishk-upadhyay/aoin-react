@@ -183,9 +183,8 @@
 
 .navbar-mobile-menu {
     overflow: hidden;
-    background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+    background: var(--white);
     border-top: 1px solid var(--gray-200);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .mobile-menu-content {
@@ -199,18 +198,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
-    background: var(--white);
-    border: 2px solid transparent;
+    padding: 1rem;
+    background: transparent;
+    border: none;
     color: var(--gray-800);
     font-weight: 500;
-    font-size: 1.05rem;
+    font-size: 1rem;
     cursor: pointer;
     text-align: left;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     transition: all var(--transition-base);
-    margin: 0 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
 }
@@ -222,30 +219,24 @@
 }
 
 .mobile-nav-link-content i {
-    font-size: 1.25rem;
-    color: var(--primary);
+    font-size: 1.125rem;
+    color: var(--gray-500);
     min-width: 24px;
     text-align: center;
     transition: all var(--transition-base);
 }
 
 .mobile-nav-link:active {
-    transform: scale(0.98);
-    background: var(--primary-light);
-    border-color: var(--primary);
+    background: var(--gray-100);
 }
 
 .mobile-nav-link:hover {
-    background: var(--primary-light);
+    background: var(--gray-50);
     color: var(--primary);
-    border-color: var(--primary);
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.15);
 }
 
 .mobile-nav-link:hover .mobile-nav-link-content i {
-    transform: scale(1.1);
-    color: var(--primary-dark);
+    color: var(--primary);
 }
 
 .mobile-nav-link > i {
@@ -263,28 +254,19 @@
 .mobile-menu-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
-    margin-top: 1.5rem;
-    padding: 1.5rem 0.5rem 0.5rem;
-    border-top: 2px solid var(--gray-200);
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-200);
 }
 
 .mobile-menu-actions .btn {
     width: 100%;
     justify-content: center;
-    padding: 1rem 1.5rem;
-    font-size: 1.05rem;
-    font-weight: 600;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-}
-
-.mobile-menu-actions .btn:active {
-    transform: scale(0.98);
-}
-
-.mobile-menu-actions .btn-outline {
-    border-width: 2px;
 }
 
 /* ============================================================================
